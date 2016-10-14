@@ -1,0 +1,65 @@
+Generate the Client Keys and Certificates
+It's now time to generate the client keys. These are created on the server, not on the laptop.
+1)	Create the client key:
+
+cd /etc/openvpn/easy-rsa/
+
+source vars
+
+./pkitool client-name
+
+2) Copy the Keys to the Client Machine (Laptop). Each client will need the following files from the following locations.
+/etc/openvpn/ca.crt
+/etc/openvpn/ta.key
+/etc/openvpn/easy-rsa/keys/client-name.crt
+/etc/openvpn/easy-rsa/keys/client-name.key
+
+
+
+COPYing Files to LOCAL machine from virtual UBUNTU:
+IN root:
+Sudo mkdir /media/windows-share1/
+
+Cd /etc/openvpn/
+Sudo  cp client-name.crt client-name.key /media/windows-share1/
+
+Cd ..
+
+Cd ..
+
+Ls –l {lion}- check for Ca.crt ta.key
+
+Make sure you are in keys folder now- cd /etc/openvpn/easy-rsa/keys/
+
+Sudo cp ca.crt ta.key /media/windows-share1/
+Cd /media/windows-share1/
+Ls –l
+
+
+On the top menu in virtual Ubuntu- DEVICE ---> Install insert GUEST Additions
+There will be pop up, cancel it.
+
+Now  go for  checking Virtual Box version—4.3.26
+
+Download from----guesadditons on openvpn website-and save it in your downloads folder.
+
+Now go to Machine settings on Virtual Ubuntu.
+Click on STORAGE----> on right side , load the ISO guest additions file that is in downloads folder ---> hit ok --->reboot the server.
+Again Machine seetings on Ubuntu
+Click on SHARED FOLDERS---> click on right side to ADD plus sign---> other (Browse) the sharedfolder1 by
+Now  get  to file explorer---> create one new folder in C drive under THIS PC---->Browse sharedfolder1---->ok--->Auto Mount--->OK
+Reboot now.
+
+
+Now configure- server config:
+1)	Copy the sample configuration file into the OpenVPN directory and open it in an editor.
+
+sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/
+
+sudo gzip -d /etc/openvpn/server.conf.gz
+
+sudo nano /etc/openvpn/server.conf
+2)	Now customize it with tunnel settings.
+The below screen shot describes dev tun
+
+Now this successfully completes the sever configuration.
