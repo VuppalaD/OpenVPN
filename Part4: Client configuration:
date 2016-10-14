@@ -1,0 +1,16 @@
+Client configuration:
+
+Download OpenVPN GUI from OpenVPN website.
+Go to program files> OpenVPN >sample-config files
+Copy the client.ovpn file.
+Now paste this file in openVPN > config directory
+Copy the four key files we obtained from the server to the desktop and then drag and drop into config directory
+
+The client.ovpn file with remote command where we give vpn server ip address and port number 1194, since 1194 port is by default with openvpn.
+
+
+Now, run the open vpn gui and run as administrator, then click on right bottom on the icon and right click to connect.
+
+Once you click connect,it will show the OpenVPN status file log and it will connect to the server with the IP address.
+
+OpenVPN Client is successfully completed.
