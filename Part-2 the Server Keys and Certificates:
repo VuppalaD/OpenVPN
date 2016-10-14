@@ -1,0 +1,41 @@
+Easy-RSA is a series of scripts which greatly simplifies this process. We will modify a text file then issue the commands to generate the keys.
+1. Create an easy-rsa folder, copy the example files into it, and set the permissions:
+Login as root:
+sudo mkdir /etc/openvpn/easy-rsa/
+
+sudo apt-get install openvpn easy-rsa
+
+sudo cp -R /usr/share/easy-rsa/* /etc/openvpn/easy-rsa/
+
+sudo chown -R $USER /etc/openvpn/easy-rsa/
+
+2.Edit the text file so that it reflects your information:
+sudo nano /etc/openvpn/easy-rsa/vars
+
+
+3) Change these items (located at the end of the file) to personalize your certificate.
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="TX"
+export KEY_CITY="Edinburg"
+export KEY_ORG="UTPA"
+export KEY_EMAIL=dvuppala@broncs.utpa.edu
+
+4) Generate the server keys and copy them to the correct locations.
+
+cd /etc/openvpn/easy-rsa/
+
+source vars
+
+./clean-all
+
+./build-dh
+
+./pkitool –initca
+
+./pkitool --server server
+
+cd keys
+
+openvpn --genkey --secret ta.key
+
+sudo cp server.crt server.key ca.crt dh2048.pem ta.key /etc/openvpn/
