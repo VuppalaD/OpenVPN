@@ -1,0 +1,19 @@
+I have used OPENVPN here to set up between Ubuntu server and Windows 8.1 client.
+
+There are some important steps to be performed while doing this set up.
+
+1) Install and configure software on your server.
+
+2) To copy files from your server.
+
+3) Set up a port forward on your router.
+
+Overview of the Installation.
+
+1. Installing and network settings on the server.
+
+2. Installation and Configuration of OpenVPN on the server.
+
+3. Creating the Keys and Certificates.
+
+4. Install and Configure OpenVPN Client.
