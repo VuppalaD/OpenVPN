@@ -1,0 +1,37 @@
+1) Install the OpenVPN and the bridge utilities onto the server:
+sudo apt-get install openvpn bridge-utils
+
+2) Change your network to use the new interface by modifying your /etc/network/interfaces file. Make sure you back it up first. The file should be changed to look something like this:
+
+Sudo nano /etc/network/interfaces
+
+# This file describes the network interfaces available on system
+# and how to activate them.
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Set up the bridge interface for OpenVPN
+auto br0
+iface br0 inet static
+address 192.168.1.168
+netmask 255.255.255.0
+gateway 192.168.1.1
+bridge_ports eth0
+iface eth0 inet manual
+up ifconfig $IFACE 0.0.0.0 up
+up ip link set $IFACE promisc on
+down ip link set $IFACE promisc off
+down ifconfig $IFACE down
+
+
+3) To allow your VPN client to browse the Internet, you will need to enable IPv4 forwarding.
+sudo nano /etc/sysctl.conf
+Uncomment the line that reads: net.ipv4.ip_forward=1
+
+
+4) You will need to open a port on your firewall to allow the VPN traffic get to the server. OpenVPN uses ports 1194 by default, so on your router, forward that port (as UDP) to your server running OpenVPN.
+Sudo ufw disable	
+Sudo service iptables stop
+
+5) Reboot your server and try pinging google.com
