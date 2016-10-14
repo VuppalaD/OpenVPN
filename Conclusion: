@@ -1,0 +1,3 @@
+The folder sharing process helps finally sharing the documents between the server and the client, importantly to remember that both machines must connect to vpn first.
+Samba, here acts as a file sharing system in ubuntu server and helps in sharing documents with client machines.
+Thus, this process thoroughly helps in sharing the folder with anyone in the office and the user can access these by connecting to vpn even if they are travelling between Houston and McAllen.
