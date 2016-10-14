@@ -1,0 +1,36 @@
+Samba works as a file server which configures network ubuntu and windows computers.
+The server can be configured to share files on the network with any client by adding them as users.
+It  acts as a server for sharing folders, printers in a network.
+Turnoff the openvpn service in ubuntu – by stopping command
+just type in sudo ip -f  ===> to flush ip tables
+
+sudo ufw disable
+
+Sudo apt-get update
+Sudo apt-get install samba
+Sudo apt-get install samba samba-common
+Sudo nano /etc/samba/smb.conf
+Sudo mkdir –p /srv/samba/share
+Cd /srv
+Ls
+Ls samba
+Sudo chown nobody.nogroup /srv/samba/share
+
+Cd /srv/samba
+Sudo restart smbd
+Sudo restart nmbd
+Sudo touch /srv/samba/share/test.txt
+Ls /srv/samba/share
+Ll /srv/samba/share
+Sudo chown nobody.nogroup /srv/samba/share/test.txt
+Ll /srv/samba/share/test.txt
+Cd ..
+Cd ..
+Sudo service openvpn start
+Sudo useradd –N –M –g sambashare shinetest
+Sudo smbpasswd –a shinetest
+Sudo id shinetest
+Sudo chown shinetest /srv/samba/share/test.txt
+Now open run and type \\192.168.1.168 
+Now my network folder will open and here we can see the network shared folder.
+We can edit the text file and save the file.
